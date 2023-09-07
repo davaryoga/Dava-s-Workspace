@@ -1,44 +1,78 @@
-#include<iostream>
-using namespace std;
+# data_manager.py
 
-int main()
-{
-    double a,b,c,d,e;
-    char x[100];
-    cout<<"NILAI KELULUSAN\n";
-    cout<<"\n";
-    cout<<"Masukan Nama Anda: ";
-    cin.getline(x,100);
-    
-    cout<<"Nilai Absen: ";
-    cin>>a;
-    
-    cout<<"Nilai Tugas: ";
-    cin>>b;
-    
-    cout<<"Nilai UTS: ";
-    cin>>c;
-    
-    cout<<"Nilai UAS: ";
-    cin>>d;
-    
-    e=(0.4*a)+(0.1*b)+(0.2*c)+(0.3*d);
-    
-    if (e>=50)
-    {
-        cout<<"\n";
-        cout<<"Selamat"<<" "<<x<<","<<"\n";
-        cout<<"Anda Lulus, dengan nilai "<<e <<"\n";
-    }
-    else
-    {
-        cout<<"\n";
-        cout<<"Mohon Maaf"<<" "<<x<<","<<"\n";
-        cout<<"Anda Harus Mengulang\n";
-    }
+# Inisialisasi dictionary untuk menyimpan data
+data = {}
 
+# Fungsi untuk memasukkan data
+def masukkan_data():
+    key = input("Masukkan kunci data: ")
+    value = input("Masukkan nilai data: ")
+    data[key] = value
+    print("Data berhasil dimasukkan.")
 
-    cin.get();
-    return 0;
+# Fungsi untuk mengubah data
+def ubah_data():
+    key = input("Masukkan kunci data yang ingin diubah: ")
+    if key in data:
+        value = input("Masukkan nilai data baru: ")
+        data[key] = value
+        print("Data berhasil diubah.")
+    else:
+        print("Kunci data tidak ditemukan.")
 
-}
+# Fungsi untuk menghapus data
+def hapus_data():
+    key = input("Masukkan kunci data yang ingin dihapus: ")
+    if key in data:
+        del data[key]
+        print("Data berhasil dihapus.")
+    else:
+        print("Kunci data tidak ditemukan.")
+
+# Fungsi untuk melakukan scan barcode
+def scan_barcode():
+    barcode = input("Masukkan barcode yang ingin di-scan: ")
+    print(f"Barang dengan barcode {barcode} berhasil di-scan.")
+
+# Fungsi untuk menampilkan menu
+def tampilkan_menu():
+    print("Pilih menu:")
+    print("1. Masukan Data")
+    print("2. Ubah Data")
+    print("3. Hapus Data")
+    print("4. Scan barcode")
+    print("5. Kirim Data")
+    print("6. Keluar")
+
+# Fungsi untuk mengirim data
+def kirim_data():
+    print("Data yang akan dikirim:")
+    for key, value in data.items():
+        print(f"{key}: {value}")
+    print("Data berhasil dikirim.")
+
+# Fungsi untuk menjalankan program utama
+def jalankan_program():
+    while True:
+        tampilkan_menu()
+        pilihan = input("Pilih menu (1/2/3/4/5/6): ")
+        
+        if pilihan == "1":
+            masukkan_data()
+        elif pilihan == "2":
+            ubah_data()
+        elif pilihan == "3":
+            hapus_data()
+        elif pilihan == "4":
+            scan_barcode()
+        elif pilihan == "5":
+            kirim_data()
+        elif pilihan == "6":
+            print("Program selesai.")
+            break
+        else:
+            print("Pilihan tidak valid. Silakan pilih menu yang benar.")
+
+# Jika modul ini dijalankan sebagai program utama, jalankan programnya
+if __name__ == "__main__":
+    jalankan_program()
