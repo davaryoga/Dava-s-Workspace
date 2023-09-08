@@ -51,6 +51,28 @@ def kirim_data():
         print(f"{key}: {value}")
     print("Data berhasil dikirim.")
 
+# Fungsi untuk mencari data
+
+
+def cari_data(data, kata_kunci):
+    found = False
+    for key, value in data.items():
+        if kata_kunci.lower() in key.lower() or kata_kunci.lower() in value.lower():
+            print(f"Kunci: {key}, Nilai: {value}")
+            found = True
+    if not found:
+        print("Data tidak ditemukan.")
+
+if __name__ == "__main__":
+    data = {
+        "kunci1": "nilai1",
+        "kunci2": "nilai2",
+        "kunci3": "nilai3"
+    }
+
+    kata_kunci = input("Masukkan kata kunci pencarian: ")
+    cari_data(data, kata_kunci)
+
 # Fungsi untuk menjalankan program utama
 def jalankan_program():
     while True:
