@@ -54,7 +54,8 @@ def kirim_data():
 # Fungsi untuk mencari data
 
 
-def cari_data(data, kata_kunci):
+def cari_data():
+    kata_kunci = input("Masukkan kata kunci pencarian: ")
     found = False
     for key, value in data.items():
         if kata_kunci.lower() in key.lower() or kata_kunci.lower() in value.lower():
